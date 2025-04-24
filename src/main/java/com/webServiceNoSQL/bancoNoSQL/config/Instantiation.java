@@ -2,6 +2,7 @@ package com.webServiceNoSQL.bancoNoSQL.config;
 
 import com.webServiceNoSQL.bancoNoSQL.domain.Post;
 import com.webServiceNoSQL.bancoNoSQL.domain.User;
+import com.webServiceNoSQL.bancoNoSQL.dto.AuthorDTO;
 import com.webServiceNoSQL.bancoNoSQL.repository.PostRepository;
 import com.webServiceNoSQL.bancoNoSQL.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +35,12 @@ public class Instantiation implements CommandLineRunner {
         User alex = new User(null, "Alex Green", "alex@gmail.com");
         User bob = new User(null, "Bob Grey", "bob@gmail.com");
 
-        Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu viagem","vou viajar para São Paulo", "Maria Carmo");
-        Post post2 = new Post(null, sdf.parse("23/03/2018"), "Bom dia","Acordei feliz hoje!", "Maria");
 
         userRepository.saveAll(Arrays.asList(maria, alex, bob));
+
+        Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu viagem","vou viajar para São Paulo", new AuthorDTO(maria));
+        Post post2 = new Post(null, sdf.parse("23/03/2018"), "Bom dia","Acordei feliz hoje!", new AuthorDTO(maria));
+
         postRepository.saveAll(Arrays.asList(post1, post2));
 
     }
