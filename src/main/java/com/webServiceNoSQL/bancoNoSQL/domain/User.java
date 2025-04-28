@@ -1,9 +1,12 @@
 package com.webServiceNoSQL.bancoNoSQL.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Document(collection = "user")
@@ -15,6 +18,10 @@ public class User implements Serializable {
     private String id;
     private String name;
     private String email;
+
+    // esse lazy = true só carrega os posts se eu explicitamente acessa-los
+    @DBRef(lazy = true)
+    private List<Post> post = new ArrayList<>();
 
     public User(){
 
@@ -50,6 +57,14 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public List<Post> getPost() {
+        return post;
+    }
+
+    public void setPost(List<Post> post) {
+        this.post = post;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -61,6 +76,7 @@ public class User implements Serializable {
     public int hashCode() {
         return Objects.hashCode(id);
     }
+
 
 
 }
