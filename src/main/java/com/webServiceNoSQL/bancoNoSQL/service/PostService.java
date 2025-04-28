@@ -1,5 +1,6 @@
 package com.webServiceNoSQL.bancoNoSQL.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.webServiceNoSQL.bancoNoSQL.domain.Post;
@@ -18,5 +19,9 @@ public class PostService {
     public Post findById(String id) {
         Optional<Post> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNoFoundException("Objeto não encontrado"));
+    }
+
+    public List<Post> findByTitle(String text){
+        return repo.findByTitleContainingIgnoreCase(text);
     }
 }
