@@ -19,8 +19,8 @@ public class User implements Serializable {
     private String name;
     private String email;
 
-    // esse lazy = true só carrega os posts se eu explicitamente acessa-los
-    @DBRef(lazy = true)
+//    // esse lazy = true só carrega os posts se eu explicitamente acessa-los
+//    @DBRef(lazy = true)
     private List<Post> post = new ArrayList<>();
 
     public User(){

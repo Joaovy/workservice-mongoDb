@@ -1,0 +1,22 @@
+package com.webServiceNoSQL.bancoNoSQL.service;
+
+import java.util.Optional;
+
+import com.webServiceNoSQL.bancoNoSQL.domain.Post;
+import com.webServiceNoSQL.bancoNoSQL.repository.PostRepository;
+import com.webServiceNoSQL.bancoNoSQL.service.exception.ObjectNoFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+@Service
+public class PostService {
+
+    @Autowired
+    private PostRepository repo;
+
+    public Post findById(String id) {
+        Optional<Post> obj = repo.findById(id);
+        return obj.orElseThrow(() -> new ObjectNoFoundException("Objeto não encontrado"));
+    }
+}
