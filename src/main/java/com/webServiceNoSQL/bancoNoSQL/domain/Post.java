@@ -70,4 +70,16 @@ public class Post implements Serializable {
     public void setAuthor(AuthorDTO author) {
         this.author = author;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Post post = (Post) o;
+        return Objects.equals(id, post.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
 }
