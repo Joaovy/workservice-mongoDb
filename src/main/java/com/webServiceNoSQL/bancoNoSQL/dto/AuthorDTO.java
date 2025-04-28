@@ -4,6 +4,7 @@ import com.webServiceNoSQL.bancoNoSQL.domain.User;
 
 import java.io.Serializable;
 
+// Porjeção com o athor dto.
 public class AuthorDTO implements Serializable {
 
     private String id;
@@ -31,6 +32,7 @@ public class AuthorDTO implements Serializable {
     }
 
     public void setName(String name) {
+
         this.name = name;
     }
 }
