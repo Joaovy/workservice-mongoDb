@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-@Document
+@Document(collection = "post")
 public class Post implements Serializable {
 
     @Id
